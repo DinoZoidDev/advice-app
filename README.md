@@ -1,6 +1,5 @@
-# React Starter Template (opininated)
+# Advice App
+Gives you recommended advice
 
-### TypeScript + React + Vite + ESLint + Prettier + Tailwind
-there are a few rules set in `.eslintrc.json`, feel free to edit!
-
-enjoy <3
+# Contribution
+##### [Advice Slip API](https://api.adviceslip.com/)
