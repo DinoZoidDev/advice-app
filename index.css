@@ -1,0 +1,21 @@
+@import url('https://rsms.me/inter/inter.css');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+    html, body, #root {
+        @apply w-full h-full bg-neutral-900
+    }
+    html {
+        font-family: 'Inter', sans-serif;
+    }
+    @supports (font-variation-settings: normal) {
+        html {
+            font-family: 'Inter var', sans-serif;
+        }
+    }
+    a {
+        @apply text-violet-500 underline underline-offset-[2.5px]
+    }
+}
