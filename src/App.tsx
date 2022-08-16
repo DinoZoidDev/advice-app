@@ -1,28 +1,29 @@
 import AdviceModal from "@/components/advice-modal";
+import { resolve } from "path";
 import { useState, useEffect } from "react";
+import sleep from "./utils/sleep";
 
 export const App = () => {
   const [adviceSlip, setAdviceSlip] = useState("");
   const [fetching, setFetching] = useState(false);
+  const [fetchTime, setFetchTime] = useState(0);
 
   const fetchAdvice = async () => {
+    setFetching(true);
+    const remainingTime = Date.now() - fetchTime;
+    if (remainingTime < 2000) {
+      console.log(2000 - remainingTime);
+      await new Promise((resolve) => setTimeout(resolve, 2000 - remainingTime));
+    }
     const { slip } = await (
       await fetch("https://api.adviceslip.com/advice")
     ).json();
+    setFetching(false);
+    setFetchTime(Date.now());
     return slip.advice;
   };
 
-  const getUniqueAdvice = async () => {
-    setFetching(true);
-    let advice = await fetchAdvice();
-    while (advice === adviceSlip) {
-      advice = await fetchAdvice();
-    }
-    setFetching(false);
-    return advice;
-  };
-
-  const applyAdvice = async () => setAdviceSlip(await getUniqueAdvice());
+  const applyAdvice = async () => setAdviceSlip(await fetchAdvice());
 
   useEffect(() => {
     applyAdvice();
