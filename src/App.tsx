@@ -1,7 +1,5 @@
 import AdviceModal from "@/components/advice-modal";
-import { resolve } from "path";
 import { useState, useEffect } from "react";
-import sleep from "./utils/sleep";
 
 export const App = () => {
   const [adviceSlip, setAdviceSlip] = useState("");
