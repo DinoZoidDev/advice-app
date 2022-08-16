@@ -6,15 +6,23 @@ export const App = () => {
   const [fetching, setFetching] = useState(false);
 
   const fetchAdvice = async () => {
-    setFetching(true);
     const { slip } = await (
       await fetch("https://api.adviceslip.com/advice")
     ).json();
-    setFetching(false);
     return slip.advice;
   };
 
-  const applyAdvice = async () => setAdviceSlip(await fetchAdvice());
+  const getUniqueAdvice = async () => {
+    setFetching(true);
+    let advice = await fetchAdvice();
+    while (advice === adviceSlip) {
+      advice = await fetchAdvice();
+    }
+    setFetching(false);
+    return advice;
+  };
+
+  const applyAdvice = async () => setAdviceSlip(await getUniqueAdvice());
 
   useEffect(() => {
     applyAdvice();
