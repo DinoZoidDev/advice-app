@@ -9,10 +9,8 @@ export const App = () => {
   const fetchAdvice = async () => {
     setFetching(true);
     const remainingTime = Date.now() - fetchTime;
-    if (remainingTime < 2000) {
-      console.log(2000 - remainingTime);
+    if (remainingTime < 2000)
       await new Promise((resolve) => setTimeout(resolve, 2000 - remainingTime));
-    }
     const { slip } = await (
       await fetch("https://api.adviceslip.com/advice")
     ).json();
@@ -45,7 +43,7 @@ export const App = () => {
           dingo
         </a>
       </span>
-      <div className="absolute bottom-6 right-6 space-x-2">
+      <div className="absolute bottom-6 space-x-2 md:right-6">
         <a
           className="relative text-neutral-500"
           href="https://github.com/DinoZoidDev/advice-app"

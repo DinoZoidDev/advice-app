@@ -13,7 +13,7 @@ const AdviceModal = ({
   fetching?: boolean;
 }) => {
   return (
-    <div className="z-10 flex max-w-xl flex-col items-center justify-center space-y-8 rounded-lg bg-neutral-700 p-8 text-center shadow-lg">
+    <div className="z-10 m-4 flex max-w-xl flex-col items-center justify-center space-y-8 rounded-lg bg-neutral-700 p-8 text-center shadow-lg">
       {fetching && !text ? (
         <Spinner className="h-10 w-10" />
       ) : (
