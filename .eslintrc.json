@@ -26,6 +26,7 @@
     "rules": {
         "react/react-in-jsx-scope": "off",
         "@typescript-eslint/no-empty-function": "warn",
+        "tailwindcss/classnames-order": "warn",
         "prettier/prettier": [
             "error",
             {

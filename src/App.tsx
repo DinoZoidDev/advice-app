@@ -12,7 +12,7 @@ export const App = () => {
     if (remainingTime < 2000)
       await new Promise((resolve) => setTimeout(resolve, 2000 - remainingTime));
     const { slip } = await (
-      await fetch("https://api.adviceslip.com/advice")
+      await fetch("https://api.adviceslip.com/advice", { cache: "no-cache" })
     ).json();
     setFetching(false);
     setFetchTime(Date.now());
@@ -26,7 +26,7 @@ export const App = () => {
   }, []);
 
   return (
-    <div className="flex h-full w-full flex-col items-center justify-center space-y-4">
+    <div className="flex h-full w-full flex-col items-center justify-center space-y-4 transition-all">
       <AdviceModal
         buttonText={"Another one"}
         text={adviceSlip}
